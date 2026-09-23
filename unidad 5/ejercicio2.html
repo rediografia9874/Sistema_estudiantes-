@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedios de estudiantes</title>
+    <style>
+        :root {
+            --azul: #255c99;
+            --azul-claro: #e8f1fb;
+            --verde: #237a57;
+            --rojo: #b44949;
+            --texto: #203040;
+            --fondo: #f3f6fa;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: var(--texto);
+            font-family: Georgia, 'Times New Roman', serif;
+            background: linear-gradient(135deg, #dcebf7, var(--fondo) 55%, #e1f1ea);
+        }
+
+        main {
+            width: min(100%, 900px);
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 28px;
+            color: white;
+            background: var(--azul);
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgb(32 48 64 / 18%);
+        }
+
+        header p {
+            margin-bottom: 0;
+            color: #dbeafe;
+        }
+
+        h1, h2 {
+            margin-top: 0;
+        }
+
+        section {
+            margin-top: 22px;
+            padding: 24px;
+            background: rgb(255 255 255 / 88%);
+            border: 1px solid #d6e1eb;
+            border-radius: 12px;
+            box-shadow: 0 6px 16px rgb(32 48 64 / 8%);
+        }
+
+        .instrucciones {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .tarjeta {
+            min-height: 110px;
+            padding: 18px;
+            border-left: 5px solid var(--azul);
+            background: var(--azul-claro);
+            border-radius: 8px;
+        }
+
+        .tarjeta strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--azul);
+        }
+
+        #resultados {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 14px;
+        }
+
+        .estudiante {
+            padding: 16px;
+            border: 1px solid #d6e1eb;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .estudiante.aprobado {
+            border-top: 5px solid var(--verde);
+        }
+
+        .estudiante.desaprobado {
+            border-top: 5px solid var(--rojo);
+        }
+
+        .promedio {
+            margin: 10px 0 4px;
+            font-size: 1.7rem;
+            font-weight: bold;
+        }
+
+        .aprobado .estado {
+            color: var(--verde);
+        }
+
+        .desaprobado .estado {
+            color: var(--rojo);
+        }
+
+        @media (max-width: 650px) {
+            .instrucciones {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Promedios de estudiantes</h1>
+            <p>Cargá las notas y consultá quiénes aprobaron.</p>
+        </header>
+
+        <section>
+            <h2>¿Cómo funciona?</h2>
+            <div class="instrucciones">
+                <div class="tarjeta">
+                    <strong>1. Cargar</strong>
+                    <span>Ingresá la cantidad de estudiantes.</span>
+                </div>
+                <div class="tarjeta">
+                    <strong>2. Calcular</strong>
+                    <span>El programa obtiene el promedio de cada estudiante.</span>
+                </div>
+                <div class="tarjeta">
+                    <strong>3. Revisar</strong>
+                    <span>Los resultados aparecen en tarjetas y en la consola.</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Resultados</h2>
+            <div id="resultados">
+                <p>Completá las preguntas para ver los resultados.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/ejercicio2_Fundamentos.js"></script>
+</body>
+</html>

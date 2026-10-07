@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lista de usuarios</title>
+	<style>
+		:root {
+			--azul: #213f61;
+			--azul-claro: #e8f1fb;
+			--texto: #203040;
+			--fondo: #f3f6fa;
+			--borde: #d6e1eb;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			padding: 40px 20px;
+			color: var(--texto);
+			font-family: Georgia, 'Times New Roman', serif;
+			background: linear-gradient(135deg, #dcebf7, var(--fondo) 55%, #5bc496);
+		}
+
+		main {
+			width: min(100%, 900px);
+			margin: 0 auto;
+		}
+
+		header {
+			padding: 28px;
+			color: white;
+			background: var(--azul);
+			border-radius: 14px;
+			box-shadow: 0 10px 25px rgb(32 48 64 / 18%);
+		}
+
+		header p {
+			margin-bottom: 0;
+			color: #dbeafe;
+		}
+
+		h1, h2 {
+			margin-top: 0;
+		}
+
+		section {
+			margin-top: 22px;
+			padding: 24px;
+			background: rgb(255 255 255 / 88%);
+			border: 1px solid var(--borde);
+			border-radius: 12px;
+			box-shadow: 0 6px 16px rgb(32 48 64 / 8%);
+		}
+
+		.barra-lista {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 16px;
+		}
+
+		.formulario {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr) auto;
+			align-items: end;
+			gap: 14px;
+		}
+
+		label {
+			display: grid;
+			gap: 7px;
+			font-weight: bold;
+		}
+
+		input {
+			width: 100%;
+			min-height: 42px;
+			padding: 9px 11px;
+			border: 1px solid #aebdca;
+			border-radius: 6px;
+			font: inherit;
+		}
+
+		input:focus {
+			outline: 3px solid #c5def7;
+			border-color: var(--azul);
+		}
+
+		.mensaje {
+			min-height: 24px;
+			margin: 14px 0;
+			color: var(--azul);
+			font-weight: bold;
+		}
+
+		button {
+			min-height: 42px;
+			padding: 9px 15px;
+			border: 0;
+			border-radius: 6px;
+			color: white;
+			background: var(--azul);
+			font: inherit;
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background: #194777;
+		}
+
+		.tabla-contenedor {
+			overflow-x: auto;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			text-align: left;
+		}
+
+		th, td {
+			padding: 12px 10px;
+			border-bottom: 1px solid var(--borde);
+		}
+
+		th {
+			color: var(--azul);
+			background: #f1f6fb;
+		}
+
+		@media (max-width: 650px) {
+			body {
+				padding: 24px 14px;
+			}
+
+			.barra-lista {
+				align-items: flex-start;
+				flex-direction: column;
+			}
+
+			.formulario {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<h1>Lista de usuarios</h1>
+			<p>Consulta los usuarios de la API y vuelve a cargarlos cuando quieras.</p>
+		</header>
+
+		<section>
+			<h2>Agregar usuario</h2>
+			<form id="formularioUsuario" class="formulario">
+				<label for="nombre">Nombre:
+					<input id="nombre" type="text" required>
+				</label>
+				<label for="email">Email:
+					<input id="email" type="email" required>
+				</label>
+				<label for="ciudad">Ciudad:
+					<input id="ciudad" type="text" required>
+				</label>
+				<button type="submit">Agregar usuario</button>
+			</form>
+		</section>
+
+		<section>
+			<div class="barra-lista">
+				<h2>Usuarios</h2>
+				<button id="recargar" type="button">Recargar</button>
+			</div>
+			<p id="estado" class="mensaje" aria-live="polite">Cargando...</p>
+			<div class="tabla-contenedor">
+				<table>
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Email</th>
+							<th>Ciudad</th>
+						</tr>
+					</thead>
+					<tbody id="tablaUsuarios"></tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+
+	<script src="Ejercicio 1__Fetch básico.js"></script>
+</body>
+</html>
